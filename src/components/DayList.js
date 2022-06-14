@@ -1,13 +1,13 @@
 import React from "react";
 import "components/DayListItem.scss";
-import "components/DayListItem";
-import classNames from "classnames";
+import DayListItem from "./DayListItem";
+
 
 
 export default function DayList(props) {
   const days = props.days;
-  const mapDays = days.map((day) => 
-   <ul key={day.id}>{day.name}</ul>
+  const mapDays = days.map((day) =>
+    <DayListItem key={day.id} name={day.name} spots={day.spots}/>
   );
   return <u>{mapDays}</u>;
 }
