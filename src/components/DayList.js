@@ -9,5 +9,5 @@ export default function DayList(props) {
   const mapDays = days.map((day) =>
     <DayListItem key={day.id} name={day.name} spots={day.spots} selected={false} setDay={props.setDay}/>
   );
-  return <u>{mapDays}</u>;
+  return <ul>{mapDays}</ul>;
 }
