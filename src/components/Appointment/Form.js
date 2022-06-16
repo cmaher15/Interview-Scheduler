@@ -22,7 +22,7 @@ export default function Form(props) {
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form onSubmit={event => event.preventDefault()} autoComplete="off">
+        <form onSubmit={event => event.preventDefault()}autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
             name="name"
@@ -32,7 +32,7 @@ export default function Form(props) {
             onChange={(event) => setStudent(event.target.value)}
           />
         </form>
-        <InterviewerList interviewers = {props.interviewers} interviewer = {interviewer}  onChange={setInterviewer}
+        <InterviewerList interviewers = {props.interviewers} interviewer = {interviewer}  setInterviewer={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
