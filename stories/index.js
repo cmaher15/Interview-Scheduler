@@ -134,6 +134,7 @@ storiesOf("InterviewerList", module)
     <InterviewerList
       interviewers={interviewers}
       value={3}
+      name="Ceilidhe"
     />
   ))
   .add("Clickable", () => (
