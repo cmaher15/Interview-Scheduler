@@ -150,13 +150,13 @@ storiesOf("InterviewerList", module)
   .add("Empty", () => (
     <Empty onAdd={action("onAdd")} />
   ))
-  .add("Edit", () => (<Show onEdit={action("onEdit")} />
+  .add("Show Edit", () => (<Show onEdit={action("onEdit")} />
   ))
-  .add("Delete", () => (<Show onDelete={action("onDelete")} />
+  .add("Show Delete", () => (<Show onDelete={action("onDelete")} />
   ))
   .add("Confirm", () => (<Confirm onConfirm={action("onConfirm")} />
   ))
-  .add("Cancel", () => 
+  .add("Confirm Cancel", () => 
   (<Confirm onCancel={action("onCancel")} />
   ))
   
