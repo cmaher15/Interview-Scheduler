@@ -6,7 +6,7 @@ import "components/Application.scss";
 import "components/Application";
 import Appointment from "./Appointment";
 import DayList from "components/DayList";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 const appointments = {
   "1": {
