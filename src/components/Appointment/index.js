@@ -17,7 +17,8 @@ export default function Appointment(props) {
       interviewer,
     };
     props.bookInterview(props.id, interview)
-    transition(SHOW)
+    .then(() => 
+      transition(SHOW))
   }
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
