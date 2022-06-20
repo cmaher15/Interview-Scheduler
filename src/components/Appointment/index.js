@@ -5,10 +5,12 @@ import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import Form from "./Form";
 import useVisualMode from "hooks/useVisualMode";
+import Status from "./Status";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   function save(name, interviewer) {
@@ -16,6 +18,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
+    transition(SAVING)
     props.bookInterview(props.id, interview)
     .then(() => 
       transition(SHOW))
@@ -41,6 +44,10 @@ export default function Appointment(props) {
           onCancel={back}
           save={save}
         />
+      )}
+      {mode === SAVING && (
+        <Status 
+        message={"Saving..."}/>
       )}
     </article>
   );
