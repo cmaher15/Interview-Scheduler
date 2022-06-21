@@ -5,7 +5,6 @@ export default function useVisualMode(initial) {
   const [history, setHistory] = useState([initial]);
   function transition(newMode, replace = false) {
     setMode(newMode);
-    //COME BACK - LAST ITEM OF HISTORY SHOULD ALWAYS CHANGE!! 
     setHistory(!replace ? [...history, mode] : [...history]);
   }
   function back() {
