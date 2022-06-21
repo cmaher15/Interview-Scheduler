@@ -17,7 +17,7 @@ export default function Form(props) {
   const save = function () {
     props.save(student, interviewer);
   };
-console.log("props", props)
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">

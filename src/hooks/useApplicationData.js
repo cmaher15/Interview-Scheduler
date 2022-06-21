@@ -15,9 +15,7 @@ export default function useApplicationData() {
     const dayObj = state.days.find((d) => d.name === state.day);
     let spots = 0;
     for (const id of dayObj.appointments) {
-      console.log("id", id)
       const appointment = appointments[id];
-      console.log("appointment", appointment)
       if (!appointment.interview) {
         spots++;
       }
@@ -64,7 +62,6 @@ export default function useApplicationData() {
       axios.get(`api/appointments`),
       axios.get(`api/interviewers`),
     ]).then((all) => {
-      console.log(all);
       setState((prev) => ({
         ...prev,
         days: all[0].data,
