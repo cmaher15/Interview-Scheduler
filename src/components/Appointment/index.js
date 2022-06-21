@@ -29,7 +29,10 @@ export default function Appointment(props) {
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(error => transition(ERROR_SAVE, true));
+      .catch((error) => {
+        console.log("error", error);
+        transition(ERROR_SAVE, true);
+      });
   }
 
   function deleteApp(interview) {
@@ -37,7 +40,7 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id, interview)
       .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE, true));
+      .catch((error) => transition(ERROR_DELETE, true));
   }
 
   const { mode, transition, back } = useVisualMode(
@@ -79,10 +82,16 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message={"Saving..."} />}
       {mode === DELETING && <Status message={"Deleting..."} />}
       {mode === ERROR_SAVE && (
-        <Error message={"There was an error updating your request."} onClose={back} />
+        <Error
+          message={"There was an error updating your request."}
+          onClose={back}
+        />
       )}
       {mode === ERROR_DELETE && (
-        <Error message={"There was an error deleting your request."} onClose={back}/>
+        <Error
+          message={"There was an error deleting your request."}
+          onClose={back}
+        />
       )}
     </article>
   );
