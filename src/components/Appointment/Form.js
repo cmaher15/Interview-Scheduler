@@ -1,6 +1,7 @@
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 import React, { useState } from "react";
+import { getByTestId } from "@testing-library/react";
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
@@ -29,6 +30,7 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => setStudent(event.target.value)}
+            data-testid="student-name-input"
           />
         </form>
         <InterviewerList
