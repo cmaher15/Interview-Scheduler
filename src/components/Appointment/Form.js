@@ -6,6 +6,7 @@ import { getByTestId } from "@testing-library/react";
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
   const reset = function () {
     return setStudent(""), setInterviewer(null);
@@ -15,8 +16,18 @@ export default function Form(props) {
     return reset(), props.onCancel();
   };
 
-  const save = function () {
-    props.save(student, interviewer);
+  const validate = function () {
+    if (student === "") {
+      console.log("Something")
+      setError("Student name cannot be blank.");
+      return;
+    }
+    if (interviewer === null) {
+      console.log("Help")
+      setError("Please select an interviewer");
+      return;
+    }
+    props.save(student, interviewer)
   };
 
   return (
@@ -32,6 +43,7 @@ export default function Form(props) {
             onChange={(event) => setStudent(event.target.value)}
             data-testid="student-name-input"
           />
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList
           interviewers={props.interviewers}
@@ -44,7 +56,7 @@ export default function Form(props) {
           <Button danger onClick={cancel}>
             Cancel
           </Button>
-          <Button confirm onClick={save}>
+          <Button confirm onClick={validate}>
             Save
           </Button>
         </section>
