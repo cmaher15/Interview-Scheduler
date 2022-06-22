@@ -12,10 +12,9 @@ The Scheduler client application created using Create React App. Express is the 
 
 Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
-## Screenshots
+## Animation of UI and Functionality
 !["Interview Scheduler UI"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/InterviewSchedulerClip.gif)
 !["Interview Scheduler Error Message"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/InterviewSchedulerClip2.gif)
-Too-Long-Error-Desktop.png)
 
 
 ## Setup
