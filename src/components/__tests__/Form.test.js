@@ -3,10 +3,6 @@ import {
   render,
   cleanup,
   fireEvent,
-  getByText,
-  queryByText,
-  getByPlaceholderText,
-  getByTestId,
 } from "@testing-library/react";
 import Form from "components/Appointment/Form";
 
@@ -102,7 +98,7 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"));
   
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { student: "Lydia Miller-Jones" }
+      target: { value: "Lydia Miller-Jones" }
     });
   
     fireEvent.click(getByText("Cancel"));
