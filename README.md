@@ -14,7 +14,7 @@ Both servers run concurrently; requests are proxied from the Webpack development
 
 ## Animation of UI and Functionality
 !["Interview Scheduler UI"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/SchedulerClip1.gif)
-!["Interview Scheduler Error Message"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/SchedulerClip2.gif)
+!["Interview Scheduler Error Message"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/SchedulerClip3.gif)
 
 
 ## Setup
