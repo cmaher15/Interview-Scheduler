@@ -49,10 +49,13 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+  
   return (
     <article className="appointment">
       <Header time={props.time} />
+
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+
       {mode === SHOW && props.interview && (
         <Show
           student={props.interview.student}
@@ -61,6 +64,7 @@ export default function Appointment(props) {
           onDelete={() => transition(CONFIRM)}
         />
       )}
+
       {mode === CONFIRM && <Confirm onConfirm={deleteApp} onCancel={back} />}
 
       {mode === CREATE && (
@@ -82,20 +86,25 @@ export default function Appointment(props) {
           save={save}
         />
       )}
+
       {mode === SAVING && <Status message={"Saving..."} />}
+
       {mode === DELETING && <Status message={"Deleting..."} />}
+
       {mode === ERROR_SAVE && (
         <Error
           message={"There was an error updating your request."}
           onClose={back}
         />
       )}
+
       {mode === ERROR_DELETE && (
         <Error
           message={"There was an error deleting your request."}
           onClose={back}
         />
       )}
+
     </article>
   );
 }

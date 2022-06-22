@@ -8,11 +8,11 @@ export default function Form(props) {
   const [error, setError] = useState("");
 
   const reset = function () {
-    return setStudent("") && setInterviewer(null);
+    return setStudent(""), setInterviewer(null);
   };
 
   const cancel = function () {
-    return reset() && props.onCancel();
+    return reset(), props.onCancel();
   };
 
   const validate = function () {
