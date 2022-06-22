@@ -12,7 +12,7 @@ describe("Appointments", () => {
     cy.get("[alt='Sylvia Palmer']").click();
 
     cy.contains("Save").click();
-    
+
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Sylvia Palmer");
   });
@@ -32,9 +32,14 @@ describe("Appointments", () => {
   });
 
   it("should cancel an interview", () => {
-    // Visits the root of our web server
-    // Clicks the delete button for the existing appointment
-    // Clicks the confirm button
-    // Sees that the appointment slot is empty
+    cy.get("[alt=Delete]").first().click({ force: true });
+
+    cy.contains("Confirm").click()
+
+    cy.contains("Deleting").should("exist");
+    cy.contains("Deleting").should("not.exist");
+
+    cy.contains(".appointment__card--show", "Archie Cohen")
+    .should("not.exist");
   });
 });
