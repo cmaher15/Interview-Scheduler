@@ -1,5 +1,23 @@
 # Interview Scheduler
 
+Using the React framework, this application allows users to book and manage appointments with available interviewers. Users have the ability to edit or delete the appointment. If there are no spots remaining on a particular day, the day's color will fade indicating no availability. The available spots for each day update in real time based on the creation or deletion of appointments. 
+
+## Tech Specs
+- React
+- Webpack, Babel
+- Axios
+- Storybook, Webpack Dev Server, Jest, Testing Library
+
+The Scheduler client application created using Create React App. Express is the basis for the Scheduler API server application.
+
+Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
+
+## Screenshots
+!["Interview Scheduler UI"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/InterviewSchedulerClip.gif)
+!["Interview Scheduler Error Message"](https://github.com/cmaher15/Interview-Scheduler/blob/master/project_photos/InterviewSchedulerClip2.gif)
+Too-Long-Error-Desktop.png)
+
+
 ## Setup
 
 Install dependencies with `npm install`.
