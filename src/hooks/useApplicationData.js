@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -76,6 +76,6 @@ export default function useApplicationData() {
     setDay,
     bookInterview,
     cancelInterview,
-    updateSpots
+    updateSpots,
   };
 }

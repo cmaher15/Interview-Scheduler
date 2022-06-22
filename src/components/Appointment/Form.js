@@ -1,7 +1,6 @@
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 import React, { useState } from "react";
-import { getByTestId } from "@testing-library/react";
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
@@ -9,11 +8,11 @@ export default function Form(props) {
   const [error, setError] = useState("");
 
   const reset = function () {
-    return setStudent(""), setInterviewer(null);
+    return setStudent("") && setInterviewer(null);
   };
 
   const cancel = function () {
-    return reset(), props.onCancel();
+    return reset() && props.onCancel();
   };
 
   const validate = function () {
@@ -25,7 +24,7 @@ export default function Form(props) {
       setError("Please select an interviewer");
       return;
     }
-    
+
     props.save(student, interviewer);
     setError("");
   };

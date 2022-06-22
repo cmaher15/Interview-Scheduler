@@ -1,4 +1,8 @@
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from "helpers/selectors";
 
 const state = {
   days: [
@@ -44,8 +48,6 @@ const state = {
   },
 };
 
-
-
 test("getAppointmentsForDay returns an array", () => {
   const result = getAppointmentsForDay(state, "Monday");
   expect(Array.isArray(result)).toBe(true);
@@ -80,8 +82,8 @@ test("getInterview returns an object with the interviewer data", () => {
       interviewer: expect.objectContaining({
         id: expect.any(Number),
         name: expect.any(String),
-        avatar: expect.any(String)
-      })
+        avatar: expect.any(String),
+      }),
     })
   );
 });

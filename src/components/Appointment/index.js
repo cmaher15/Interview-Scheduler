@@ -44,7 +44,7 @@ export default function Appointment(props) {
         console.log("error", error);
         transition(ERROR_DELETE, true);
       });
-    }
+  }
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
