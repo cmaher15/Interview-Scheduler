@@ -51,7 +51,12 @@ describe("Form", () => {
   it("validates that the interviewer cannot be null", () => {
     const onSave = jest.fn();
     const { getByText } = render(
-      <Form interviewer={null} interviewers={interviewers} save={onSave} student="Lydia Miller-Jones" />
+      <Form
+        interviewer={null}
+        interviewers={interviewers}
+        save={onSave}
+        student="Lydia Miller-Jones"
+      />
     );
     fireEvent.click(getByText("Save"));
 
@@ -59,21 +64,55 @@ describe("Form", () => {
     expect(onSave).not.toHaveBeenCalled();
   });
 
-  it("calls onSave function when the name and interviewer is defined", () => {
+  it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
-    const { getByText, queryByText } = render(
-      <Form
-        interviewers={interviewers}
-        student={"Lydia Miller-Jones"}
-        save={onSave}
-        interviewer={interviewers[0].id}
-      />
+    const { getByText, getByPlaceholderText, queryByText } = render(
+      <Form interviewers={interviewers} save={onSave} interviewer={interviewers[0].id}/>
     );
+
+    fireEvent.click(getByText("Save"));
+
+    expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+    expect(onSave).not.toHaveBeenCalled();
+
+    fireEvent.change(getByPlaceholderText("Enter Student Name"), {
+      target: { value: "Lydia Miller-Jones" },
+    });
+
     fireEvent.click(getByText("Save"));
 
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
-    expect(queryByText(/please select an interviewer/i)).toBeNull();
+
     expect(onSave).toHaveBeenCalledTimes(1);
-    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
+    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", interviewers[0].id);
   });
+
+  it("calls onCancel and resets the input field", () => {
+    const onCancel = jest.fn();
+    const onSave = jest.fn();
+    const { getByText, getByPlaceholderText, queryByText } = render(
+      <Form
+        interviewers={interviewers}
+        student="Lydia Miller-Jones"
+        save={onSave}
+        onCancel={onCancel}
+      />
+    );
+  
+    fireEvent.click(getByText("Save"));
+  
+    fireEvent.change(getByPlaceholderText("Enter Student Name"), {
+      target: { student: "Lydia Miller-Jones" }
+    });
+  
+    fireEvent.click(getByText("Cancel"));
+  
+    expect(queryByText(/student name cannot be blank/i)).toBeNull();
+  
+    expect(getByPlaceholderText("Enter Student Name")).toHaveValue("");
+  
+    expect(onCancel).toHaveBeenCalledTimes(1);
+  });
+
+
 });
